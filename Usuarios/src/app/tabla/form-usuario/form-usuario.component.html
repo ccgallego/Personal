@@ -1,0 +1,75 @@
+<mat-card style="max-width: 50cm;">
+    <mat-card-header>
+        <mat-icon>group</mat-icon>
+        <mat-card-title>Agregar Usuario</mat-card-title>
+        <mat-card-subtitle>Diligencie los campos *</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <form style="margin-left: 10px;">
+            <mat-form-field>
+                <mat-label>Nombre Completo</mat-label>
+                <input matInput required type="text" name="nombre" [(ngModel)]="usuario.nombre" required>
+            </mat-form-field>
+
+            <mat-form-field class="input-space">
+                <mat-label>Cédula</mat-label>
+                <input matInput type="number" name="cedula" [(ngModel)]="usuario.cedula" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Género</mat-label>
+                <mat-select name="genero" [(ngModel)]="usuario.genero">
+                    <mat-option value="Masculino">Masculino</mat-option>
+                    <mat-option value="Femenino">Femenino</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="input-space">
+                <mat-label>Fecha de Nacimiento</mat-label>
+                <input matInput required type="date" name="fechaNacimiento" [(ngModel)]="usuario.fechaNacimiento" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Correo Electrónico</mat-label>
+                <input matInput required type="email" name="correoElectronico" [(ngModel)]="usuario.correo" required>
+            </mat-form-field>
+
+            <mat-form-field class="input-space">
+                <mat-label>Dirección</mat-label>
+                <input matInput type="text" name="direccion" [(ngModel)]="usuario.direccion" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Fecha de Ingreso</mat-label>
+                <input matInput required type="date" name="fechaIngreso" [(ngModel)]="usuario.fechaIngreso" required>
+            </mat-form-field>
+
+            <mat-form-field class="input-space">
+                <mat-label>Cargo</mat-label>
+                <input matInput type="text" name="cargo" [(ngModel)]="usuario.cargo" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Usuario</mat-label>
+                <input matInput type="text" name="usuario" [(ngModel)]="usuario.usuario" required>
+            </mat-form-field>
+
+            <mat-form-field class="input-space">
+                <mat-label>Clave</mat-label>
+                <input matInput type="password" name="clave" [(ngModel)]="usuario.password" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Seleccione rol</mat-label>
+                <mat-select name="rol" [(ngModel)]="usuario.rol">
+                    <mat-option value="administrador">Administrador</mat-option>
+                    <mat-option value="empleado">Empleado</mat-option>
+                </mat-select>
+            </mat-form-field><br>
+        </form>
+
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button style="width: 100%;" [style.background]="'#094293'" (click)="guardarUsuario()" color="primary">Guardar</button>
+    </mat-card-actions>
+</mat-card>

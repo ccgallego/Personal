@@ -1,0 +1,27 @@
+<div class="ui-g">
+    <div class="ui-g-12 ui-md-6 ui-lg-3">
+        <form [formGroup]="form">
+            <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" formControlName="nombre" pInputText> 
+            <label for="float-input">Nombre</label>
+        </span>
+            <br>
+            <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" formControlName="cedula" pInputText> 
+            <label for="float-input">Cédula</label>
+        </span>
+            <br>
+            <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" formControlName="correo" pInputText> 
+            <label for="float-input">Correo Electrónico</label>
+        </span>
+            <br>
+            <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" formControlName="direccion" pInputText> 
+            <label for="float-input">Dirección</label>
+        </span>
+            <br>
+            <button pButton type="button" [disabled]="this.form.invalid" label="Enviar" class="ui-button-success" (click)="enviarDatos()"></button>
+        </form>
+    </div>
+</div>

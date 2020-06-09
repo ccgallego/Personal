@@ -1,0 +1,12 @@
+.hidetextTrue {
+    -webkit-text-security: disc;
+    /* Default */
+}
+
+.hidetextFalse {
+    -webkit-text-security: none;
+}
+
+td {
+    text-align: center;
+}

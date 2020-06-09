@@ -1,0 +1,106 @@
+<br>
+<button matTooltip="Crear usuario" style="background-color: #094293" mat-mini-fab color="primary" (click)="dialogUsuario()"><mat-icon>add</mat-icon></button>
+<br><br>
+<div *ngIf="mostrarTabla">
+    <p-table [value]="listUser" dataKey="idUsuario" [paginator]="true" [rows]="10">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3em"></th>
+                <th style="width: 2cm;">ID</th>
+                <th style="width: 6cm;">Nombre</th>
+                <th style="width: 3cm;">Cédula</th>
+                <th>Fecha de Nacimiento</th>
+                <th style="width: 6cm;">Correo Electrónico</th>
+                <th>Fecha de Ingreso</th>
+                <th>Cargo</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-u let-expanded="expanded">
+            <tr>
+                <td>
+                    <a href="#" [pRowToggler]="u">
+                        <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                    </a>
+                </td>
+                <td style="width: 2cm;">{{u.idUsuario}}</td>
+                <td style="width: 6cm; text-align: left;">{{u.nombre}}</td>
+                <td style="width: 3cm;">{{u.cedula}}</td>
+                <td>{{u.fechaNacimiento| date: 'dd/MM/yyyy'}}</td>
+                <td style="width: 6cm; text-align: left;">{{u.correo}}</td>
+                <td>{{u.fechaIngreso| date: 'dd/MM/yyyy'}}</td>
+                <td>{{u.cargo}}</td>
+                <td>
+                    <mat-chip-list aria-label="Fish selection">
+                        <mat-chip style="margin-left: 0.7cm;" matTooltip="Cambiar estado" (click)="cambiarEstado(u)" color="{{u.estado==true? 'primary': 'warn'}}" color="primary" selected>{{u.estado==true? 'Activo': 'Inactivo'}}</mat-chip>
+                    </mat-chip-list>
+                </td>
+                <td>
+                    <button pButton title="Eliminar" type="button" icon="pi pi-trash" class="ui-button-danger" (click)="eliminar(u)"></button>
+                    <button pButton title="Actualizar" type="button" icon="pi pi-pencil" class="ui-button-text-icon-primary" (click)="actualizar(u)"></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="rowexpansion" let-u>
+            <tr>
+                <td [attr.colspan]="10">
+                    <div class="p-grid -fluid" style="font-size:16px;padding:25px">
+                        <div class="p-col-3 p-md-9">
+                            <div class="p-grid" style="text-align: left;">
+                                <div class="p-col-12">
+                                    <b>Nombre:</b> {{u.nombre}}
+                                </div>
+                                <div class="p-col-12">
+                                    <b>Cédula:</b> {{u.cedula}}
+                                </div>
+                                <div class="p-col-12">
+                                    <b>Genero:</b> {{u.genero}}
+                                </div>
+                                <div class="p-col-12">
+                                    <b>Fecha Nacimiento:</b> {{u.fechaNacimiento | date: 'dd/MM/yyyy'}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-grid -fluid" style="font-size: 16px; padding: 25px;">
+                        <div class="p-col-3 p-md-9">
+                            <div class="p-grid" style="text-align: justify; padding-left: 10cm; margin-top: -10%;">
+                                <div class="p-col-12">
+                                    <b>Dirección:</b> {{u.direccion}}
+                                </div>
+                                <div class="p-col-12 ">
+                                    <b>Correo Electrónico:</b> {{u.correo}}
+                                </div>
+                                <div class="p-col-12 ">
+                                    <b>Fecha de Ingreso:</b> {{u.fechaIngreso}}
+                                </div>
+                                <div class="p-col-12 ">
+                                    <b>Cargo:</b> {{u.cargo}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-grid -fluid" style="font-size: 16px; padding: 25px;">
+                        <div class="p-col-3 p-md-9">
+                            <div class="p-grid" style="text-align: justify; padding-left: 21cm; margin-top: -14.1%;">
+                                <div class="p-col-12">
+                                    <b>Usuario:</b> {{u.usuario}}
+                                </div>
+                                <div class="p-col-12 ">
+                                    <b>Rol:</b> {{u.rol}}
+                                </div>
+                                <div class="p-col-12">
+                                    <b>Estado: </b>
+                                    <div *ngIf="u.estado == true; else elseBlock">Activo</div>
+                                    <ng-template #elseBlock>Inactivo</ng-template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <p-confirmDialog header="Confirmation " icon="pi pi-exclamation-triangle "></p-confirmDialog>
+</div>

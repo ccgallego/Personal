@@ -1,0 +1,17 @@
+<div class="prueba">
+    <mat-card style="width: 400px;">
+        <img style="width: 200px;margin-top: 10px;margin-left: 90px;" src="Card" src="assets/imagen2.jpg">
+        <br><br>
+        <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Usuario</mat-label>
+            <input (keyup.enter)="ingresar()" matInput placeholder="Ingresar usuario" name="usuario" type="text" [(ngModel)]="usuario" required>
+            <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 100%;margin-top: -20px">
+            <mat-label>Clave</mat-label>
+            <input (keyup.enter)="ingresar()" matInput name="password" type="password" placeholder="Ingresar clave" [(ngModel)]="password" required>
+            <mat-icon matSuffix>https</mat-icon>
+        </mat-form-field>
+        <button [style.background]="'#0000FF'" style="width: 100%;" (click)="ingresar()" mat-raised-button color="primary">Iniciar Sesión</button>
+    </mat-card>
+</div>
