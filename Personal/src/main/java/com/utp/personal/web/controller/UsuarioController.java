@@ -59,17 +59,11 @@ public class UsuarioController {
             throw new Exception(("Debe ingresar el id del usuario a buscar"));
         }
         UsuarioDTO user = service.buscarPorId(id);
+        if(user == null){
+            return ResponseEntity.notFound().build();
+        }
 
         return new ResponseEntity(user, HttpStatus.OK);
-    }
-    
-    @GetMapping("/login/{usuario}/{password}")
-    public ResponseEntity<?> login(@PathVariable("usuario") String usu, @PathVariable("password") String password) throws Exception{
-        UsuarioDTO usuario = service.login(usu, password);
-        if(usuario != null){
-           return ResponseEntity.ok(usuario); 
-        }
-        return ResponseEntity.noContent().build();
     }
     
     @DeleteMapping("{id}")
@@ -78,6 +72,9 @@ public class UsuarioController {
             throw new Exception("No se puede eliminar");
         }
         UsuarioDTO user = service.eliminarUsuario(id);
+        if(user == null){
+            return ResponseEntity.notFound().build();
+        }
 
         return ResponseEntity.ok(user);
     }
@@ -92,7 +89,7 @@ public class UsuarioController {
         if (u != null) {
             return ResponseEntity.ok(u);
         }
-        throw new Exception("Error actualizando el usuario");
+        return ResponseEntity.notFound().build();
     }
     
 }

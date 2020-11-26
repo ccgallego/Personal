@@ -6,7 +6,6 @@
 package com.utp.personal.data.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,14 +35,9 @@ public class UsuarioEntity implements Serializable {
     private String nombre;
     private String cedula;
     private String genero;
-    private String fechaNacimiento;
     private String correo;
     private String direccion;
-    private String fechaIngreso;
     private String cargo;
-    private String usuario;
-    private String password;
-    private String rol;
     private Boolean estado;
     
     

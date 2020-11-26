@@ -24,6 +24,4 @@ public interface UsuarioService {
 
     UsuarioDTO actualizarUsuario(Long id, UsuarioDTO user) throws Exception;
     
-    UsuarioDTO login(String usuario, String clave) throws Exception;
-
 }

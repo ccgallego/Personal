@@ -37,8 +37,6 @@ public class UsuarioServiceImpl implements UsuarioService {
         if (usuario == null) {
             throw new Exception("El usuario debe contener la información completa");
         }
-        //Lo que se ingrese en el campo usuario, lo guardamos en minuscula
-        usuario.setUsuario(usuario.getUsuario().toLowerCase());
         //Declaramos variable tipo UsuarioEntity para almacenar lo que devuelve el metodo save del repositorio
         UsuarioEntity u = this.usuarioRepository.save(mapper.map(usuario, UsuarioEntity.class));
         //Volvemos a mapear la respuesta del save a DTO para retornar
@@ -108,21 +106,10 @@ public class UsuarioServiceImpl implements UsuarioService {
         UsuarioEntity u = opUser.orElseThrow(() -> new Exception("No existe el usuario"));
         //Capturamos el idUsuario y se lo ingremos a la nueva información
         user.setIdUsuario(u.getIdUsuario());
-        //Lo que ingresen en el campo usuario, lo volvemos en minuscula
-        user.setUsuario(user.getUsuario().toLowerCase());
         //Guardamos el usuario con el metodo save del repositorio y la respuesta la almacenamos en 'us'
         UsuarioEntity us = this.usuarioRepository.save(mapper.map(user, UsuarioEntity.class));
         //Retornamos la informacion nueva del usuario
         return mapper.map(us, UsuarioDTO.class);
     }
-
-    @Override
-    public UsuarioDTO login(String usuario, String clave) throws Exception {
-        UsuarioEntity u = this.usuarioRepository.findByUsuarioAndPassword(usuario, clave);
-        if(u != null ){
-            return mapper.map(u, UsuarioDTO.class);
-        }
-        return null;
-    }
-
+    
 }

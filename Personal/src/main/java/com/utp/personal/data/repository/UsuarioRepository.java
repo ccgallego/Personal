@@ -16,6 +16,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UsuarioRepository extends CrudRepository<UsuarioEntity, Long>{
     
-    UsuarioEntity findByUsuarioAndPassword(String usuario, String password);
-    
 }
